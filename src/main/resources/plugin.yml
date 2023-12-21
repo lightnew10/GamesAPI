@@ -1,0 +1,7 @@
+name: GamesAPI
+version: '${project.version}'
+main: fr.lightnew.GamesAPI
+api-version: '1.20'
+load: POSTWORLD
+commands:
+  setspawn:
