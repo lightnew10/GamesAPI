@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -28,7 +29,8 @@ public class PlayerManager implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onJoin(PlayerJoinEvent event) {
         if (GameState.getCurrentGameState().equals(GameState.WAITING)) {
-            GamesAPI.playersInGame.put(event.getPlayer().getUniqueId(), new PlayerStatistic(event.getPlayer()));
+            if (!GamesAPI.playersInGame.containsKey(event.getPlayer().getUniqueId()))
+                GamesAPI.playersInGame.put(event.getPlayer().getUniqueId(), new PlayerStatistic());
             int players = Bukkit.getOnlinePlayers().size();
             if (players >= GamesAPI.getSettings().getMinLaunch())
                 GamesAPI.getGameLaunch().sendTimerPreLaunch();
@@ -43,4 +45,19 @@ public class PlayerManager implements Listener {
             event.setQuitMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "-" + ChatColor.GRAY + "] " + event.getPlayer().getName() + " (" +( Bukkit.getOnlinePlayers().size()-1) + "/" + GamesAPI.getSettings().getMaxPlayers() + ")");
         }
     }
+
+    @EventHandler
+    public void dead(PlayerDeathEvent event) {
+        Player killer = event.getEntity().getKiller();
+        Player player = event.getEntity();
+        if (killer == player)
+            return;
+        if (!GamesAPI.playersInGame.containsKey(killer.getUniqueId()))
+            GamesAPI.playersInGame.put(killer.getUniqueId(), new PlayerStatistic());
+        if (!GamesAPI.playersInGame.containsKey(player.getUniqueId()))
+            GamesAPI.playersInGame.put(player.getUniqueId(), new PlayerStatistic());
+        GamesAPI.playersInGame.get(player.getUniqueId()).addDeath(1);
+        GamesAPI.playersInGame.get(killer.getUniqueId()).addKill(1);
+    }
+
 }
