@@ -5,7 +5,27 @@
 
 Minecraft version : `1.20`
 
+[![](https://jitpack.io/v/lightnew10/GamesAPI.svg)](https://jitpack.io/#lightnew10/GamesAPI)
+
+
 ## How to start ?
+
+## Maven
+_I know is wtf version_
+```
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.lightnew10</groupId>
+    <artifactId>GamesAPI</artifactId>
+    <version>e10a36f4d8</version>
+</dependency>
+```
 ### Settings :
 
 ```java
