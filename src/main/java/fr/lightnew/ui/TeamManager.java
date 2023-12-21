@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TeamManager {
-    private static final Map<String, Team> teams = new HashMap<>();
-    private static final Map<Player, Team> player_in_teams = new HashMap<>();
+    public static Map<String, Team> teams = new HashMap<>();
+    public static Map<Player, Team> player_in_teams = new HashMap<>();
 
     public static void createTeam(String teamName, ChatColor color, String prefix) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();

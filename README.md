@@ -83,6 +83,28 @@ public void onEnable() {
 }
 ```
 
+### Team's :
+
+```java
+import fr.lightnew.ui.TeamManager;
+import org.bukkit.ChatColor;
+
+public void onEnable() {
+    //Create a team
+    //If you want to create a team, use TeamManager
+    TeamManager.createTeam("TeamName", ChatColor.YELLOW, "[YELLOW] ");
+    //Add player in a team
+    TeamManager.addPlayerToTeam("TeamName", player);
+    //remove player in a team
+    TeamManager.removePlayerToTeam("TeamName", player);
+    //Modify a prefix for a player
+    TeamManager.setPlayerPrefix(player, "[New Prefix] ");
+    //And you have a list a team with player's in team
+    TeamManager.teams; // -> Map<String, Team> | String = Name team
+    TeamManager.player_in_teams; // -> Map<Player, Team>
+}
+```
+
 ## Finished for now
 I hope to add new content for easing create mini-game
 
