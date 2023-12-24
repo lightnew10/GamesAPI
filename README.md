@@ -12,7 +12,6 @@ Minecraft version : `1.20`
 ## Maven
 
 ```
-
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
