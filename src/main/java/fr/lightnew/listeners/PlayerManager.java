@@ -34,7 +34,6 @@ public class PlayerManager implements Listener {
             int players = Bukkit.getOnlinePlayers().size();
             if (players >= GamesAPI.getSettings().getMinLaunch())
                 GamesAPI.getGameLaunch().sendTimerPreLaunch();
-            event.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] " + event.getPlayer().getName() + " (" + players + "/" + GamesAPI.getSettings().getMaxPlayers() + ")");
         }
     }
 
@@ -42,7 +41,6 @@ public class PlayerManager implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         if (GameState.getCurrentGameState().equals(GameState.WAITING)) {
             GamesAPI.playersInGame.remove(event.getPlayer().getUniqueId());
-            event.setQuitMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "-" + ChatColor.GRAY + "] " + event.getPlayer().getName() + " (" +( Bukkit.getOnlinePlayers().size()-1) + "/" + GamesAPI.getSettings().getMaxPlayers() + ")");
         }
     }
 
