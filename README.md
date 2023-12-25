@@ -4,8 +4,7 @@
 `I created this API for easy create a game.`
 
 Minecraft version : `1.20`
-
-[![](https://jitpack.io/v/lightnew10/GamesAPI.svg)](https://jitpack.io/#lightnew10/GamesAPI)
+[![](https://jitpack.io/v/lightnew10/gamesapi.svg)](https://jitpack.io/#lightnew10/gamesapi)
 
 ## How to start ?
 
@@ -19,8 +18,8 @@ Minecraft version : `1.20`
 
 <dependency>
     <groupId>com.github.lightnew10</groupId>
-    <artifactId>GamesAPI</artifactId>
-    <version>1.0</version>
+    <artifactId>gamesapi</artifactId>
+    <version>1.1</version>
 </dependency>
 ```
 ### Settings :
