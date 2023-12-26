@@ -26,6 +26,7 @@ public final class GamesAPI extends JavaPlugin {
     @Override
     public void onEnable() {
         ConsoleLog.info("Plugin try enable...");
+        saveDefaultConfig();
 
         //Set preset
         instance = this;
@@ -35,6 +36,11 @@ public final class GamesAPI extends JavaPlugin {
         //set default settings
         settings = new GameSettings(false, 5, 10, "lobby", 20);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
+        //Config
+        settings.setSpawnWaiting(getConfig().getLocation("spawn-waiting"));
+        settings.setSpawnGame(getConfig().getLocation("spawn-game"));
+        settings.setSpawnEnd(getConfig().getLocation("spawn-end"));
 
         //Listeners
         Bukkit.getPluginManager().registerEvents(new PlayerManager(), this);
@@ -47,6 +53,11 @@ public final class GamesAPI extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        getConfig().set("spawn-waiting", settings.getSpawnWaiting());
+        getConfig().set("spawn-game", settings.getSpawnGame());
+        getConfig().set("spawn-end", settings.getSpawnEnd());
+        saveConfig();
+
         ConsoleLog.success("Plugin Disable");
     }
 
