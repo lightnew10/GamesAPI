@@ -20,7 +20,7 @@ Minecraft version : `1.20`
 <dependency>
     <groupId>com.github.lightnew10</groupId>
     <artifactId>gamesapi</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
 </dependency>
 ```
 ### Settings :
