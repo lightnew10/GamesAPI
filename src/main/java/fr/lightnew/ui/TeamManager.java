@@ -14,9 +14,7 @@ public class TeamManager {
     public static Map<Player, Team> player_in_teams = new HashMap<>();
 
     public static void createTeam(String teamName, ChatColor color, String prefix) {
-        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        if (scoreboard == null)
-            scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
 
         Team team = scoreboard.getTeam(teamName);
         if (team == null) {
