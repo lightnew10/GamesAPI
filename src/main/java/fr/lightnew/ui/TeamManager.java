@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
 import java.util.HashMap;
@@ -14,7 +15,13 @@ public class TeamManager {
     public static Map<Player, Team> player_in_teams = new HashMap<>();
 
     public static void createTeam(String teamName, ChatColor color, String prefix) {
-        Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
+        Scoreboard scoreboard = null;
+        if (scoreboardManager != null) {
+            scoreboard = scoreboardManager.getNewScoreboard();
+        } else {
+            throw new IllegalStateException("Scoreboard is null and a scoreboard not load.");
+        }
 
         Team team = scoreboard.getTeam(teamName);
         if (team == null) {
