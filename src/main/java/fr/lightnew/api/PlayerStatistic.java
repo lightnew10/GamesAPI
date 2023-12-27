@@ -1,7 +1,5 @@
 package fr.lightnew.api;
 
-import org.bukkit.entity.Player;
-
 public class PlayerStatistic {
 
     private Integer kill;

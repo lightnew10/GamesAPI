@@ -20,7 +20,7 @@ Minecraft version : `1.20`
 <dependency>
     <groupId>com.github.lightnew10</groupId>
     <artifactId>gamesapi</artifactId>
-    <version>1.3</version>
+    <version>1.0</version>
 </dependency>
 ```
 ### Settings :
@@ -103,22 +103,20 @@ public void onEnable() {
 ### Team's :
 
 ```java
-import fr.lightnew.ui.TeamManager;
+
+import fr.lightnew.teams.TeamManager;
 import org.bukkit.ChatColor;
 
 public void onEnable() {
     //Create a team
     //If you want to create a team, use TeamManager
-    TeamManager.createTeam("TeamName", ChatColor.YELLOW, "[YELLOW] ");
-    //Add player in a team
-    TeamManager.addPlayerToTeam("TeamName", player);
-    //remove player in a team
-    TeamManager.removePlayerToTeam("TeamName", player);
-    //Modify a prefix for a player
-    TeamManager.setPlayerPrefix(player, "[New Prefix] ");
-    //And you have a list a team with player's in team
-    TeamManager.teams; // -> Map<String, Team> | String = Name team
-    TeamManager.player_in_teams; // -> Map<Player, Team>
+    TeamManager team = new TeamManager("one", "[RED] ", ChatColor.RED);
+    //Add player in team
+    team.addPlayer(player);
+    //remove player
+    team.removePlayer(player);
+    //List of Team's
+    TeamManager.listTeams;
 }
 ```
 

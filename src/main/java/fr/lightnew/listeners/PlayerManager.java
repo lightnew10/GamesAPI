@@ -48,6 +48,8 @@ public class PlayerManager implements Listener {
     public void dead(PlayerDeathEvent event) {
         Player killer = event.getEntity().getKiller();
         Player player = event.getEntity();
+        if (killer == null)
+            return;
         if (killer == player)
             return;
         if (!GamesAPI.playersInGame.containsKey(killer.getUniqueId()))

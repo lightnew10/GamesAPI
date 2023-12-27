@@ -1,2 +1,7 @@
-package fr.lightnew.teams;public class ChangeTeamAction {
+package fr.lightnew.teams;
+
+public enum ChangeTeamAction {
+    CREATE,
+    UPDATE,
+    DESTROY;
 }
